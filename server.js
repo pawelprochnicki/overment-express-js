@@ -1,11 +1,8 @@
 const app = require('./app');
 
-app.get('/', function(req, res, next) {
-  res.json({
-    status: 'Success!'
-  });
-});
+// zmienna środowiskowa do definiowania portu nasłuchiwania
+app.set('port', process.env.PORT || 8080);
 
-app.listen(8080, function() {
-  console.log('Listening!');
+const server = app.listen(app.get('port'), () => {
+  console.log(`Listen on ${server.address().port}`);
 });
